@@ -20,13 +20,12 @@ pipeline {
             }
         }
         stage('Deploy Production') {
-            when {
-                expression { currentBuild.branch == 'master' }
-            }
             steps {
-                sh 'echo "Deploying to production environment..."'
-                // Ajoutez ici les commandes de déploiement vers l'environnement de production
+                echo '=== Étape de Déploiement vers Production ==='
+                echo "Branche actuelle : ${currentBuild.branch}"
+                // Autres commandes de déploiement
             }
         }
+
     }
 }
