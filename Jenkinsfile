@@ -3,26 +3,29 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                // Étape de build
                 sh 'echo "Building the project..."'
+                // Ajoutez ici les commandes pour compiler votre projet
             }
         }
-        stage('Deploy to Staging') {
+        stage('Test') {
             steps {
-                // Étape de déploiement vers un environnement de staging
-                sh 'echo "Deploying to staging environment..."'
-                // Ajoutez ici les commandes de déploiement réelles
+                sh 'echo "Running tests..."'
+                // Ajoutez ici les commandes pour exécuter des tests
             }
         }
-        stage('Deploy to Production') {
+        stage('Deploy Staging') {
+            steps {
+                sh 'echo "Deploying to staging environment..."'
+                // Ajoutez ici les commandes de déploiement vers un environnement de staging
+            }
+        }
+        stage('Deploy Production') {
             when {
-                // Exemple : déployer uniquement en cas de branche principale
                 expression { currentBuild.branch == 'main' }
             }
             steps {
-                // Étape de déploiement vers l'environnement de production
                 sh 'echo "Deploying to production environment..."'
-                // Ajoutez ici les commandes de déploiement réelles
+                // Ajoutez ici les commandes de déploiement vers l'environnement de production
             }
         }
     }
