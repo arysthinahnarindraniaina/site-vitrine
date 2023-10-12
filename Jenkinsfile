@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Deploy Production') {
             steps {
-                echo '=== Étape de Déploiement vers Production ==='
+                 // echo '=== Étape de Déploiement vers Production ==='
                 echo "Branche actuelle : ${currentBuild.branch}"
                 // Autres commandes de déploiement
             }
