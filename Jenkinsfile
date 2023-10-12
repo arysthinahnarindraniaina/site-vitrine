@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Deploy Production') {
             when {
-                expression { currentBuild.branch == 'main' }
+                expression { currentBuild.branch == 'master' }
             }
             steps {
                 sh 'echo "Deploying to production environment..."'
