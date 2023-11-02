@@ -22,7 +22,7 @@ pipeline {
         }
         stage('Deploy Production') {
             when {
-                expression { currentBuild.branch == 'main' }
+                expression { currentBuild.branch == 'master' }
             }
             steps {
                 echo '=== Étape de Déploiement vers Production ==='
