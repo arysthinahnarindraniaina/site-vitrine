@@ -4,23 +4,21 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Récupérer le code depuis le référentiel Git
-                checkout scm
+                // Récupérer le code depuis GitHub
+                git 'https://github.com/votre-utilisateur/votre-repo.git'
             }
         }
 
         stage('Build') {
             steps {
-                // Étapes de construction (peut être vide pour une application web statique)
+                // Aucune étape de build nécessaire pour une application statique
             }
         }
 
         stage('Deploy') {
             steps {
-                script {
-                    // Copier les fichiers vers le répertoire NGINX
-                    sh 'cp -r * /var/www/it-connect.tech/'
-                }
+                // Copier les fichiers vers le répertoire NGINX
+                sh 'cp -r * /usr/share/nginx/html/'
             }
         }
     }
@@ -28,6 +26,7 @@ pipeline {
     post {
         success {
             echo 'Déploiement réussi!'
+            // Vous pouvez ajouter d'autres actions post-déploiement ici si nécessaire
         }
     }
 }
