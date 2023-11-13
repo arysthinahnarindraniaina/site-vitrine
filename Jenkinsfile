@@ -5,7 +5,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Récupérer le code depuis GitHub
-                git 'https://github.com/votre-utilisateur/votre-repo.git'
+                git 'https://github.com/arysthinahnarindraniaina/site-vitrine.git'
             }
         }
 
