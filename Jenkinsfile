@@ -1,30 +1,36 @@
 pipeline {
     agent any
+
     stages {
-        stage('Build') {
+        stage('Checkout') {
             steps {
-                sh 'echo "Building the project..."'
-            }
-        }
-        stage('Test') {
-            steps {
-                sh 'echo "Running tests..."'
+                // Récupérer le code depuis le référentiel Git
+                checkout scm
             }
         }
 
+        stage('Build') {
+            steps {
+                // Étapes de construction (peut être vide pour une application web statique)
+            }
+        }
 
         stage('Deploy') {
             steps {
-                // Copiez les fichiers vers le répertoire NGINX pour le déploiement
-                sh 'sudo -S cp -r * /usr/share/nginx/html/'
+                script {
+                    // Copier les fichiers vers le répertoire NGINX
+                    sh 'cp -r * /var/www/it-connect.tech/'
+                }
             }
         }
+    }
 
-
-        
+    post {
+        success {
+            echo 'Déploiement réussi!'
+        }
     }
 }
-
 
 
 
