@@ -11,11 +11,17 @@ pipeline {
                 sh 'echo "Running tests..."'
             }
         }
+
+
         stage('Deploy') {
             steps {
-                sh 'echo "Deploying the application..."'
+                // Copiez les fichiers vers le répertoire NGINX pour le déploiement
+                sh 'cp -r * /usr/share/nginx/html/'
             }
         }
+
+
+        
     }
 }
 
