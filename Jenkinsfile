@@ -16,7 +16,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 // Copiez les fichiers vers le répertoire NGINX pour le déploiement
-                sh 'cp -r * /usr/share/nginx/html/'
+                sh 'sudo cp -r * /usr/share/nginx/html/'
             }
         }
 
