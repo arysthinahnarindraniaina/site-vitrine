@@ -20,14 +20,6 @@ pipeline {
                 // Pour un projet web statique, vous pouvez utiliser des outils comme rsync pour copier les fichiers vers un serveur de staging.
             }
         }
-        stage('Deploy Production') {
-            when {
-                expression { currentBuild.branch == 'master' }
-            }
-            steps {
-                echo '=== Étape de Déploiement vers Production ==='
-                // Vous pouvez utiliser des outils comme rsync pour copier les fichiers vers un serveur de production.
-            }
         }
     }
 }
