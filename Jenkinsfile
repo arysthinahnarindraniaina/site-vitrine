@@ -1,23 +1,28 @@
 pipeline {
-  agent any
-  stages {
-    stage('Step 1') {
-      steps {
-        sh 'echo \'Hi, GeekFlare. Starting to build the App.\''
-      }
-    }
+    agent any
 
-    stage('Step 2') {
-      steps {
-        sh 'input(\'Do you want to proceed?\')'
-      }
+    stages {
+        stage('Build') {
+            steps {
+                script {
+                    // Étape de construction (par exemple, copie des fichiers)
+                    sh 'cp -r src/* build/'
+                }
+            }
+        }
+        stage('Deploy to GCP Storage') {
+            steps {
+                script {
+                    // Utilisation du plugin Google Cloud Storage pour déployer sur GCP
+                    withCredentials([gcsProjectName('votre-projet-gcp'), string(credentialsId: 'votre-identifiant-de-credentials', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
+                        sh 'gsutil -m rsync -r build/ gs://votre-bucket-gcs/'
+                    }
+                }
+            }
+        }
     }
-
-    stage('Step 3') {
-      steps {
-        sh 'echo "Start the deploy ..."'
-      }
-    }
-
-  }
 }
+
+
+
+
