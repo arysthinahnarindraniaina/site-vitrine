@@ -9,12 +9,6 @@ pipeline {
             }
         }
 
-        stage('Build') {
-            steps {
-                // Aucune étape de build nécessaire pour une application statique
-            }
-        }
-
         stage('Deploy') {
             steps {
                 // Copier les fichiers vers le répertoire NGINX
